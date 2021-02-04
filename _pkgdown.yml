@@ -1,0 +1,42 @@
+home:
+  title: An R package with Tools for LBJ's Data Initiatives
+  description: Custom ggplot2 themes and other resources for the LBJ Data Initiatives
+development:
+  mode: devel
+authors:
+  Matt Worthington:
+    href: http://hadley.nz
+  The LBJ School of Public Affairs:
+    href: https://lbj.utexas.edu
+    html: <img src="https://lbj.utexas.edu/sites/all/themes/lbj/images/logo.svg" height="24" />
+navbar:
+  structure:
+    left:
+    - home
+    - reference
+    right: github
+  components:
+    home:
+      icon: fas fa-home fa-lg
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/utexas-lbjp-data
+template:
+  opengraph:
+    twitter:
+      creator: "@mrworthington"
+      site: "@TheLBJSChool"
+      card: summary_large_image
+  params:
+    bootswatch: flatly
+repo:
+  url:
+    home: https://github.com/utexas-lbjp-datab/lbjdata/
+    source: https://github.com/utexas-lbjp-data/lbjdata/blob/master/
+    issue: https://github.com/utexas-lbjp-data/lbjdata/issues/
+    user: https://github.com/
+

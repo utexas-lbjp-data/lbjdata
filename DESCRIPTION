@@ -1,0 +1,28 @@
+Package: lbjdata
+Title: Tools For The LBJ School's Data Initiatives
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Matthew",
+             family = "Worthington",
+             role = c("aut", "cre"),
+             email = "worthington.matthew@utexas.edu",
+             comment = c(ORCID = "0000-0001-5649-0764"))
+Description: Provides custom themes and resources for projects related to the LBJ School's Data Initiatives.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    highcharter,
+    ggplot2,
+    ggtext (>= 0.1.1),
+    magrittr,
+    dplyr,
+    extrafont
+Remotes: 
+    wilkelab/ggtext
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
