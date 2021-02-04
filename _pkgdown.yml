@@ -1,8 +1,8 @@
 home:
   title: An R package with Tools for LBJ's Data Initiatives
   description: Custom ggplot2 themes and other resources for the LBJ Data Initiatives
-development:
-  mode: devel
+# development:
+#   mode: devel
 authors:
   Matt Worthington:
     href: http://hadley.nz
