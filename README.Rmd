@@ -18,14 +18,14 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of lbjdata is to ...
+The goal of lbjdata is to provide custom themes and resources for projects related to the LBJ School's Data Initiatives.
 
 ## Installation
 
-You can install the released version of lbjdata from [CRAN](https://CRAN.R-project.org) with:
+You can install the development version of `{lbjdata}` from [Github](https://github.com/utexas-lbjp-data/lbjdata) with:
 
 ``` r
-install.packages("lbjdata")
+devtools::install_github("utexas-lbjp-data/lbjdata")
 ```
 
 ## Example
@@ -65,11 +65,11 @@ provider_types %>%
        subtitle = "Source: Texas Department of State Health Services")
 ```
 
-```{r echo=FALSE, message=FALSE, fig.width=10,arning=FALSE}
-provider_types %>% 
+```{r echo=FALSE, message=FALSE, fig.width=10, fig.retina=2, warning=FALSE}
+provider_types %>%
   ggplot() +
-  geom_col(aes(x=reorder(type, desc(tot_shipped)), 
-               y = tot_shipped, 
+  geom_col(aes(x=reorder(type, desc(tot_shipped)),
+               y = tot_shipped,
                fill=type)) +
   geom_text(angle=90, color="#2d2d2d", size = 3.1, family = "LibreFranklin-Bold",
             aes(y= 0, x=type, label = type), hjust = 0) +

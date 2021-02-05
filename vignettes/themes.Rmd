@@ -1,39 +1,28 @@
 ---
-title: 
-output:
-  html_document:
-    self_contained: false
+title: "Using ggplot2 lbjdata themes"
+output: rmarkdown::html_vignette
+author: "Matt Worthington"
+opengraph:
+  twitter:
+    card: summary
+    creator: "@mrworthington"
+vignette: >
+  %\VignetteIndexEntry{themes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  comment = "#>"
 )
 ```
 
-# lbjdata
 
-<!-- badges: start -->
-<!-- badges: end -->
+## Theming chart made in ggplot2 with lbjdata
 
-The goal of lbjdata is to ...
-
-## Installation
-
-You can install the released version of lbjdata from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("lbjdata")
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to use lbjdata's ggplot2 theme. First, load the packages:
 
 ```{r example}
 library(lbjdata)
@@ -43,7 +32,7 @@ library(dplyr)
 library(tidyr)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Then, import some data:
 
 ```{r provider_chart, message=FALSE, warning=FALSE}
 provider_types <- read_csv("https://genesis.soc.texas.gov/files/accessibility/vaccineprovideraccessibilitydata.csv") %>% 
@@ -54,21 +43,9 @@ provider_types <- read_csv("https://genesis.soc.texas.gov/files/accessibility/va
   arrange(desc(tot_shipped))
 ```
 
-```{
-provider_types %>% 
-  ggplot() +
-  geom_col(aes(x=reorder(type, desc(tot_shipped)), 
-               y = tot_shipped, 
-               fill=type)) +
-  geom_text(angle=90, color="#2d2d2d", size = 3.1, family = "LibreFranklin-Bold",
-            aes(y= 0, x=type, label = type), hjust = 0) +
-  theme_lbj() +
-  theme(axis.text.x = element_blank()) +
-  labs(title = "Vaccine Supply, By Type of Provider",
-       subtitle = "Source: Texas Department of State Health Services")
-```
+Then, draw a chart with ggplot2 and add the theme:
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 provider_types %>% 
   ggplot() +
   geom_col(aes(x=reorder(type, desc(tot_shipped)), 

@@ -6,15 +6,16 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of lbjdata is to …
+The goal of lbjdata is to provide custom themes and resources for
+projects related to the LBJ School’s Data Initiatives.
 
 ## Installation
 
-You can install the released version of lbjdata from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the development version of `{lbjdata}` from
+[Github](https://github.com/utexas-lbjp-data/lbjdata) with:
 
 ``` r
-install.packages("lbjdata")
+devtools::install_github("utexas-lbjp-data/lbjdata")
 ```
 
 ## Example
