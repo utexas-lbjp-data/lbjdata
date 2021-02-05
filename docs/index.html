@@ -104,65 +104,38 @@
 <p>This is a basic example which shows you how to solve a common problem:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">lbjdata</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.0.6     ✓ dplyr   1.0.4</span>
-<span class="co">#&gt; ✓ tidyr   1.1.2     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.0</span>
-<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'janitor'</span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
 <span class="co">#&gt; The following objects are masked from 'package:stats':</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;     chisq.test, fisher.test</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://jkunst.com/highcharter">highcharter</a></span><span class="op">)</span>
-<span class="co">#&gt; Registered S3 method overwritten by 'quantmod':</span>
-<span class="co">#&gt;   method            from</span>
-<span class="co">#&gt;   as.zoo.data.frame zoo</span></code></pre></div>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></code></pre></div>
 <p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">provider_types</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://genesis.soc.texas.gov/files/accessibility/vaccineprovideraccessibilitydata.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">type</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">summarise</span><span class="op">(</span>tot_shipped <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">total_shipped</span><span class="op">)</span>,
-            tot_avail <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">vaccines_available</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">drop_na</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">tot_shipped</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ── Column specification ────────────────────────────────────────────────────────</span>
-<span class="co">#&gt; cols(</span>
-<span class="co">#&gt;   NAME = col_character(),</span>
-<span class="co">#&gt;   TYPE = col_character(),</span>
-<span class="co">#&gt;   TSA = col_character(),</span>
-<span class="co">#&gt;   STREET = col_character(),</span>
-<span class="co">#&gt;   CITY = col_character(),</span>
-<span class="co">#&gt;   COUNTY = col_character(),</span>
-<span class="co">#&gt;   ADDRESS = col_character(),</span>
-<span class="co">#&gt;   ZIP = col_character(),</span>
-<span class="co">#&gt;   LAST_UPDATE_VAC = col_character(),</span>
-<span class="co">#&gt;   LAST_UPDATE_TIME_VAC = col_time(format = ""),</span>
-<span class="co">#&gt;   PFIZER_AVAILABLE = col_double(),</span>
-<span class="co">#&gt;   MODERNA_AVAILABLE = col_double(),</span>
-<span class="co">#&gt;   VACCINES_AVAILABLE = col_double(),</span>
-<span class="co">#&gt;   Total_Shipped = col_double(),</span>
-<span class="co">#&gt;   PublicPhone = col_character(),</span>
-<span class="co">#&gt;   WEBSITE = col_character()</span>
-<span class="co">#&gt; )</span>
-
-<span class="va">provider_types</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="http://jkunst.com/highcharter/reference/hchart.html">hchart</a></span><span class="op">(</span><span class="st">"column"</span>, <span class="fu"><a href="http://jkunst.com/highcharter/reference/hcaes.html">hcaes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">type</span>, y <span class="op">=</span> <span class="va">tot_shipped</span>, colors<span class="op">=</span><span class="va">type</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="http://jkunst.com/highcharter/reference/hc_add_theme.html">hc_add_theme</a></span><span class="op">(</span><span class="fu"><a href="reference/hc_theme_lbj.html">hc_theme_lbj</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="http://jkunst.com/highcharter/reference/hc_title.html">hc_title</a></span><span class="op">(</span>text<span class="op">=</span><span class="st">"Vaccine Supply, By Type of Provider"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="http://jkunst.com/highcharter/reference/hc_subtitle.html">hc_subtitle</a></span><span class="op">(</span>text<span class="op">=</span><span class="st">"Source: Texas Department of State Health Services"</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-provider_chart-1.png" width="100%"></p>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code><a href="https://devtools.r-lib.org//reference/build_rmd.html">devtools::build_readme()</a></code> is handy for this. You could also use GitHub Actions to re-render <code>README.Rmd</code> every time you push. An example workflow can be found here: <a href="https://github.com/r-lib/actions/tree/master/examples" class="uri">https://github.com/r-lib/actions/tree/master/examples</a>.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
+<code class="sourceCode R"><span class="va">provider_types</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://genesis.soc.texas.gov/files/accessibility/vaccineprovideraccessibilitydata.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span>type <span class="op">=</span> <span class="va">TYPE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>tot_shipped <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Total_Shipped</span><span class="op">)</span>,
+            tot_avail <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">VACCINES_AVAILABLE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">tot_shipped</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre class="{"><code>provider_types %&gt;% 
+  ggplot() +
+  geom_col(aes(x=reorder(type, desc(tot_shipped)), 
+               y = tot_shipped, 
+               fill=type)) +
+  geom_text(angle=90, color="#2d2d2d", size = 3.1, family = "LibreFranklin-Bold",
+            aes(y= 0, x=type, label = type), hjust = 0) +
+  theme_lbj() +
+  theme(axis.text.x = element_blank()) +
+  labs(title = "Vaccine Supply, By Type of Provider",
+       subtitle = "Source: Texas Department of State Health Services")</code></pre>
+<p><img src="reference/figures/README-unnamed-chunk-2-1.png" width="100%"></p>
 </div>
 </div>
   </div>

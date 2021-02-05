@@ -1,8 +1,5 @@
 ---
-title: 
-output:
-  html_document:
-    self_contained: false
+output:  github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -68,7 +65,7 @@ provider_types %>%
        subtitle = "Source: Texas Department of State Health Services")
 ```
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, fig.width=10,arning=FALSE}
 provider_types %>% 
   ggplot() +
   geom_col(aes(x=reorder(type, desc(tot_shipped)), 
