@@ -6,3 +6,5 @@
 ^README\.Rmd$
 ^\.github$
 ^pkgdown
+^build-home\.R
+^index\.Rmd
